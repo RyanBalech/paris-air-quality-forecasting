@@ -12,9 +12,9 @@ Four rolling-origin backtests use complete 504-hour windows. Missing historical 
 | --- | ---: |
 | Seasonal median | 7.255 |
 | LightGBM, calendar and safe pollutant lags | 6.875 |
-| LightGBM, calendar, lags and ERA5 weather | **4.925** |
+| LightGBM, calendar, lags and ERA5 weather | **4.885** |
 
-The weather model improves the local mean by about 32% relative to the seasonal median. [Per-fold and per-pollutant results](results/backtest.json) show where it helps and where errors remain high, especially O₃ and NO₂. The validation windows are not independent and the result does not establish leaderboard performance.
+The weather model improves the local mean by about 33% relative to the seasonal median. [Per-fold and per-pollutant results](results/backtest.json) show where it helps and where errors remain high, especially O₃ and NO₂. Short weather lags improved all four backtests relative to the initial weather model (4.925), but this feature choice used those same windows. The validation windows are not independent and the result does not establish leaderboard performance.
 
 ## Reproduce
 
@@ -38,4 +38,5 @@ The four validation cutoffs are specified in [`experiment.py`](src/paris_air_qua
 - Historical ERA5 is treated as perfectly known future weather, which follows the challenge's stated allowance but is optimistic for operational forecasting.
 - The provided pollutant series has long missing intervals, particularly CO in 2021. Scores use available validation labels only.
 - The timestamps are continuous hourly strings without explicit timezone information. Weather is aligned to GMT; this assumption should be checked before any operational use.
+- Feature choices were informed by the reported validation windows. An untouched holdout would be needed for an unbiased estimate of the final model-selection step.
 - No model is judged by the hidden test labels in this repository.

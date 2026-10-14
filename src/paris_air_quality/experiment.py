@@ -63,6 +63,7 @@ def backtest(zip_path: Path, weather_path: Path, output: Path,
               "weather_cache_sha256": hashlib.sha256(weather_path.read_bytes()).hexdigest(),
               "model_settings": {"train_years": 3, "n_estimators": 500,
                                  "objective": "regression_l1", "random_state": 42},
+              "weather_features": "current conditions, 3/6/24-hour lags, 6/24-hour means",
               "software": {"python": platform.python_version(),
                            **{name: version(name) for name in
                               ("numpy", "pandas", "scikit-learn", "lightgbm")}},

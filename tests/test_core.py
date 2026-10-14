@@ -52,6 +52,22 @@ def test_features_never_read_future_pollutant_values():
     assert not x.filter(like="valeur_NO2_lag").isna().all().all()
 
 
+def test_weather_features_use_only_weather_at_or_before_the_prediction_hour():
+    index = pd.date_range("2024-01-01", periods=1600, freq="h")
+    history = pd.DataFrame({target: np.arange(1000, dtype=float) for target in TARGETS},
+                           index=index[:1000])
+    weather = pd.DataFrame({column: np.arange(len(index), dtype=float)
+                            for column in ("temperature_2m", "precipitation",
+                                           "wind_speed_10m", "relative_humidity_2m",
+                                           "shortwave_radiation", "wind_direction_10m")}, index=index)
+    future = index[1000:1504]
+    x = build_features(future, history, weather)
+    assert x.iloc[0]["weather_temperature_2m"] == 1000
+    assert x.iloc[0]["weather_temperature_2m_lag3"] == 997
+    assert x.iloc[0]["weather_temperature_2m_lag24"] == 976
+    assert x.iloc[-1]["valeur_NO2_lag_504"] == 999
+
+
 def test_forecasts_have_full_nonnegative_horizon():
     index = pd.date_range("2023-01-01", periods=1500, freq="h")
     history = pd.DataFrame({target: 10 + np.sin(np.arange(len(index)) / 24)
