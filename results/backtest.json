@@ -43,13 +43,13 @@
     {
       "cutoff": "2023-09-03 22",
       "method": "lightgbm_weather",
-      "score": 5.968462948371274,
+      "score": 5.93299498671381,
       "per_target": {
-        "valeur_NO2": 10.26580025809613,
-        "valeur_CO": 0.05252452890200642,
-        "valeur_O3": 12.129925283382315,
-        "valeur_PM10": 4.161406073253923,
-        "valeur_PM25": 3.232658598221996
+        "valeur_NO2": 10.017424937551082,
+        "valeur_CO": 0.04982251753883815,
+        "valeur_O3": 12.230225370432107,
+        "valeur_PM10": 4.050131208779475,
+        "valeur_PM25": 3.31737089926755
       },
       "observed_rows": {
         "valeur_NO2": 503,
@@ -100,13 +100,13 @@
     {
       "cutoff": "2024-03-01 22",
       "method": "lightgbm_weather",
-      "score": 5.511169686859423,
+      "score": 5.438984080175026,
       "per_target": {
-        "valeur_NO2": 7.693743788539784,
-        "valeur_CO": 0.04490408169915076,
-        "valeur_O3": 9.496342794032506,
-        "valeur_PM10": 5.835089461209086,
-        "valeur_PM25": 4.485768308816589
+        "valeur_NO2": 7.431796493752097,
+        "valeur_CO": 0.04353771037187527,
+        "valeur_O3": 9.23003536394598,
+        "valeur_PM10": 6.039548259444119,
+        "valeur_PM25": 4.450002573361059
       },
       "observed_rows": {
         "valeur_NO2": 489,
@@ -157,13 +157,13 @@
     {
       "cutoff": "2024-06-01 22",
       "method": "lightgbm_weather",
-      "score": 3.9897264001579424,
+      "score": 3.938545114914528,
       "per_target": {
-        "valeur_NO2": 3.670527518377703,
-        "valeur_CO": 0.024614854966206166,
-        "valeur_O3": 9.075078621669231,
-        "valeur_PM10": 4.395535999492452,
-        "valeur_PM25": 2.7828750062841197
+        "valeur_NO2": 3.6117685951618217,
+        "valeur_CO": 0.025600842204778953,
+        "valeur_O3": 8.857745027260373,
+        "valeur_PM10": 4.438835919779823,
+        "valeur_PM25": 2.758775190165846
       },
       "observed_rows": {
         "valeur_NO2": 495,
@@ -214,13 +214,13 @@
     {
       "cutoff": "2024-08-12 22",
       "method": "lightgbm_weather",
-      "score": 4.230508443760237,
+      "score": 4.228861936915775,
       "per_target": {
-        "valeur_NO2": 5.605141163586616,
-        "valeur_CO": 0.029756954490738598,
-        "valeur_O3": 8.697886678154138,
-        "valeur_PM10": 4.048979570009451,
-        "valeur_PM25": 2.770777852560239
+        "valeur_NO2": 5.6588800500841785,
+        "valeur_CO": 0.030078224936084714,
+        "valeur_O3": 8.63718871857552,
+        "valeur_PM10": 4.065798103486075,
+        "valeur_PM25": 2.7523645874970177
       },
       "observed_rows": {
         "valeur_NO2": 394,
@@ -253,23 +253,18 @@
       }
     },
     "lightgbm_weather": {
-      "mean_score": 4.9249668697872195,
+      "mean_score": 4.884846529679785,
       "per_target": {
-        "valeur_NO2": 6.808803182150058,
-        "valeur_CO": 0.03795010501452548,
-        "valeur_O3": 9.849808344309547,
-        "valeur_PM10": 4.610252775991228,
-        "valeur_PM25": 3.318019941470736
+        "valeur_NO2": 6.6799675191372945,
+        "valeur_CO": 0.03725982376289427,
+        "valeur_O3": 9.738798620053494,
+        "valeur_PM10": 4.6485783728723735,
+        "valeur_PM25": 3.3196283125728683
       }
     }
   },
   "competition_zip_sha256": "88a8891d6afdf901f55ffac9ca49f48ed763e1772e0fefe3aacd2ee339179c3c",
   "weather_cache_sha256": "8b80904ced7cd2408f017c81c2aaaca3a311ac6eced4764d52ca4013b63f184b",
-  "weather_source": "Open-Meteo ERA5 archive, Paris, GMT",
-  "limitations": [
-    "Historical reanalysis weather is treated as perfectly known, as permitted by the challenge.",
-    "Validation ignores missing pollutant labels; the hidden test labels are unavailable."
-  ],
   "model_settings": {
     "train_years": 3,
     "n_estimators": 500,
@@ -282,5 +277,11 @@
     "pandas": "2.3.3",
     "scikit-learn": "1.9.1",
     "lightgbm": "4.7.0"
-  }
+  },
+  "weather_source": "Open-Meteo ERA5 archive, Paris, GMT",
+  "limitations": [
+    "Historical reanalysis weather is treated as perfectly known, as permitted by the challenge.",
+    "Validation ignores missing pollutant labels; the hidden test labels are unavailable."
+  ],
+  "weather_features": "current conditions, 3/6/24-hour lags, 6/24-hour means"
 }

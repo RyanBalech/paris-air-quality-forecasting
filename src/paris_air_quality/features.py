@@ -45,8 +45,11 @@ def build_features(index: pd.DatetimeIndex, known_targets: pd.DataFrame,
         for column in ("temperature_2m", "precipitation", "wind_speed_10m",
                        "relative_humidity_2m", "shortwave_radiation"):
             series = weather[column]
-            x[f"weather_{column}_lag24"] = series.reindex(
-                index - pd.Timedelta(hours=24)).to_numpy()
+            for lag in (3, 6, 24):
+                x[f"weather_{column}_lag{lag}"] = series.reindex(
+                    index - pd.Timedelta(hours=lag)).to_numpy()
+            x[f"weather_{column}_mean6"] = series.rolling(6, min_periods=3).mean(
+            ).reindex(index).to_numpy()
             x[f"weather_{column}_mean24"] = series.rolling(24, min_periods=12).mean(
             ).reindex(index).to_numpy()
     return x.astype("float32")
