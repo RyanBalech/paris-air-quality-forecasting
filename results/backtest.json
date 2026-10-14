@@ -1,0 +1,286 @@
+{
+  "metric": "mean of observed-label MAE for five pollutants",
+  "horizon_hours": 504,
+  "folds": [
+    {
+      "cutoff": "2023-09-03 22",
+      "method": "seasonal_median",
+      "score": 9.789763018682775,
+      "per_target": {
+        "valeur_NO2": 17.21292246520875,
+        "valeur_CO": 0.07256845238095239,
+        "valeur_O3": 19.72390873015873,
+        "valeur_PM10": 6.661538461538461,
+        "valeur_PM25": 5.277876984126984
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      }
+    },
+    {
+      "cutoff": "2023-09-03 22",
+      "method": "lightgbm_calendar",
+      "score": 9.229213467985998,
+      "per_target": {
+        "valeur_NO2": 14.485055163133422,
+        "valeur_CO": 0.06134974346646235,
+        "valeur_O3": 19.56237062387053,
+        "valeur_PM10": 6.599692862335346,
+        "valeur_PM25": 5.437598947124227
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      }
+    },
+    {
+      "cutoff": "2023-09-03 22",
+      "method": "lightgbm_weather",
+      "score": 5.968462948371274,
+      "per_target": {
+        "valeur_NO2": 10.26580025809613,
+        "valeur_CO": 0.05252452890200642,
+        "valeur_O3": 12.129925283382315,
+        "valeur_PM10": 4.161406073253923,
+        "valeur_PM25": 3.232658598221996
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      }
+    },
+    {
+      "cutoff": "2024-03-01 22",
+      "method": "seasonal_median",
+      "score": 7.833539585404436,
+      "per_target": {
+        "valeur_NO2": 9.645705521472392,
+        "valeur_CO": 0.057747959183673474,
+        "valeur_O3": 17.817757936507935,
+        "valeur_PM10": 6.740466101694915,
+        "valeur_PM25": 4.906020408163265
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      }
+    },
+    {
+      "cutoff": "2024-03-01 22",
+      "method": "lightgbm_calendar",
+      "score": 6.615132991699052,
+      "per_target": {
+        "valeur_NO2": 8.58302002472364,
+        "valeur_CO": 0.06371804086109148,
+        "valeur_O3": 13.312754217984379,
+        "valeur_PM10": 6.434195652074913,
+        "valeur_PM25": 4.681977022851238
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      }
+    },
+    {
+      "cutoff": "2024-03-01 22",
+      "method": "lightgbm_weather",
+      "score": 5.511169686859423,
+      "per_target": {
+        "valeur_NO2": 7.693743788539784,
+        "valeur_CO": 0.04490408169915076,
+        "valeur_O3": 9.496342794032506,
+        "valeur_PM10": 5.835089461209086,
+        "valeur_PM25": 4.485768308816589
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      }
+    },
+    {
+      "cutoff": "2024-06-01 22",
+      "method": "seasonal_median",
+      "score": 5.747815593920384,
+      "per_target": {
+        "valeur_NO2": 5.423030303030303,
+        "valeur_CO": 0.037003968253968254,
+        "valeur_O3": 13.422619047619047,
+        "valeur_PM10": 6.310416666666667,
+        "valeur_PM25": 3.5460079840319354
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      }
+    },
+    {
+      "cutoff": "2024-06-01 22",
+      "method": "lightgbm_calendar",
+      "score": 5.8602889274554,
+      "per_target": {
+        "valeur_NO2": 5.267968551625187,
+        "valeur_CO": 0.030384697854660664,
+        "valeur_O3": 14.293174684609198,
+        "valeur_PM10": 6.028745789074452,
+        "valeur_PM25": 3.6811709141135043
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      }
+    },
+    {
+      "cutoff": "2024-06-01 22",
+      "method": "lightgbm_weather",
+      "score": 3.9897264001579424,
+      "per_target": {
+        "valeur_NO2": 3.670527518377703,
+        "valeur_CO": 0.024614854966206166,
+        "valeur_O3": 9.075078621669231,
+        "valeur_PM10": 4.395535999492452,
+        "valeur_PM25": 2.7828750062841197
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      }
+    },
+    {
+      "cutoff": "2024-08-12 22",
+      "method": "seasonal_median",
+      "score": 5.650330762054326,
+      "per_target": {
+        "valeur_NO2": 6.453299492385787,
+        "valeur_CO": 0.044572289156626504,
+        "valeur_O3": 13.376686507936508,
+        "valeur_PM10": 5.118439716312057,
+        "valeur_PM25": 3.258655804480652
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      }
+    },
+    {
+      "cutoff": "2024-08-12 22",
+      "method": "lightgbm_calendar",
+      "score": 5.794048584942615,
+      "per_target": {
+        "valeur_NO2": 7.362411392888191,
+        "valeur_CO": 0.035302864515245974,
+        "valeur_O3": 13.488868861530777,
+        "valeur_PM10": 4.80079766642474,
+        "valeur_PM25": 3.2828621393541217
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      }
+    },
+    {
+      "cutoff": "2024-08-12 22",
+      "method": "lightgbm_weather",
+      "score": 4.230508443760237,
+      "per_target": {
+        "valeur_NO2": 5.605141163586616,
+        "valeur_CO": 0.029756954490738598,
+        "valeur_O3": 8.697886678154138,
+        "valeur_PM10": 4.048979570009451,
+        "valeur_PM25": 2.770777852560239
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      }
+    }
+  ],
+  "summary": {
+    "seasonal_median": {
+      "mean_score": 7.25536224001548,
+      "per_target": {
+        "valeur_NO2": 9.683739445524308,
+        "valeur_CO": 0.05297316724380516,
+        "valeur_O3": 16.085243055555555,
+        "valeur_PM10": 6.207715236553025,
+        "valeur_PM25": 4.247140295200709
+      }
+    },
+    "lightgbm_calendar": {
+      "mean_score": 6.874670993020766,
+      "per_target": {
+        "valeur_NO2": 8.92461378309261,
+        "valeur_CO": 0.04768883667436512,
+        "valeur_O3": 15.164292096998722,
+        "valeur_PM10": 5.965857992477362,
+        "valeur_PM25": 4.270902255860773
+      }
+    },
+    "lightgbm_weather": {
+      "mean_score": 4.9249668697872195,
+      "per_target": {
+        "valeur_NO2": 6.808803182150058,
+        "valeur_CO": 0.03795010501452548,
+        "valeur_O3": 9.849808344309547,
+        "valeur_PM10": 4.610252775991228,
+        "valeur_PM25": 3.318019941470736
+      }
+    }
+  },
+  "competition_zip_sha256": "88a8891d6afdf901f55ffac9ca49f48ed763e1772e0fefe3aacd2ee339179c3c",
+  "weather_cache_sha256": "8b80904ced7cd2408f017c81c2aaaca3a311ac6eced4764d52ca4013b63f184b",
+  "weather_source": "Open-Meteo ERA5 archive, Paris, GMT",
+  "limitations": [
+    "Historical reanalysis weather is treated as perfectly known, as permitted by the challenge.",
+    "Validation ignores missing pollutant labels; the hidden test labels are unavailable."
+  ],
+  "model_settings": {
+    "train_years": 3,
+    "n_estimators": 500,
+    "objective": "regression_l1",
+    "random_state": 42
+  },
+  "software": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "lightgbm": "4.7.0"
+  }
+}

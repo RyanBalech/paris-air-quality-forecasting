@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paris-air-quality-forecasting"
+version = "0.1.0"
+description = "Reproducible hourly multi-pollutant forecasting for the X/HEC Paris air-quality challenge"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<2.4", "pandas>=2.1,<3", "scikit-learn>=1.4,<2", "lightgbm>=4,<5"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.8,<1"]
+
+[project.scripts]
+paris-air = "paris_air_quality.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

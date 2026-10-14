@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+data/raw/
+data/cache/
+outputs/
+catboost_info/
+
