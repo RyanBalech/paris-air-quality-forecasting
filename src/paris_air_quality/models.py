@@ -26,14 +26,15 @@ def seasonal_median(history: pd.DataFrame, future: pd.DatetimeIndex) -> pd.DataF
 
 def direct_lightgbm(history: pd.DataFrame, future: pd.DatetimeIndex,
                     weather: pd.DataFrame | None = None, *, train_years: int = 3,
-                    n_estimators: int = 500) -> pd.DataFrame:
+                    n_estimators: int = 500, enhanced: bool = False,
+                    num_leaves: int = 31, min_child_samples: int = 80) -> pd.DataFrame:
     """Train one median-regression model per pollutant without future pollutant features."""
     if len(future) != HORIZON_HOURS or future[0] != history.index[-1] + pd.Timedelta(hours=1):
         raise ValueError("Expected a contiguous 504-hour horizon after the training cutoff")
     start = history.index[-1] - pd.DateOffset(years=train_years)
     labels = history.loc[history.index >= start]
-    x_train = build_features(labels.index, history, weather)
-    x_future = build_features(future, history, weather)
+    x_train = build_features(labels.index, history, weather, enhanced=enhanced)
+    x_future = build_features(future, history, weather, enhanced=enhanced)
     days_old = (history.index[-1] - labels.index).total_seconds() / 86400
     weights = np.asarray(np.exp(-days_old / 730), dtype=float)
     output = pd.DataFrame(index=future, columns=TARGETS, dtype=float)
@@ -41,7 +42,7 @@ def direct_lightgbm(history: pd.DataFrame, future: pd.DatetimeIndex,
         valid = labels[target].notna().to_numpy()
         model = LGBMRegressor(
             objective="regression_l1", n_estimators=n_estimators, learning_rate=0.035,
-            num_leaves=31, min_child_samples=80, colsample_bytree=0.9,
+            num_leaves=num_leaves, min_child_samples=min_child_samples, colsample_bytree=0.9,
             subsample=0.8, subsample_freq=1, reg_lambda=2.0,
             random_state=42, n_jobs=4, verbosity=-1,
         )

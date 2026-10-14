@@ -74,9 +74,32 @@ def test_forecasts_have_full_nonnegative_horizon():
                             for target in TARGETS}, index=index)
     future = pd.date_range(index[-1] + pd.Timedelta(hours=1), periods=504, freq="h")
     for prediction in (seasonal_median(history, future),
-                       direct_lightgbm(history, future, n_estimators=10)):
+                       direct_lightgbm(history, future, n_estimators=10),
+                       direct_lightgbm(history, future, n_estimators=10, enhanced=True)):
         assert prediction.shape == (504, 5)
         assert prediction.notna().all().all()
         assert (prediction >= 0).all().all()
     with pytest.raises(ValueError, match="504-hour"):
         direct_lightgbm(history, future[:100], n_estimators=10)
+
+
+def test_enhanced_features_ignore_poisoned_future_labels():
+    index = pd.date_range("2023-01-01", periods=2504, freq="h")
+    values = pd.DataFrame({t: np.arange(len(index), dtype=float) for t in TARGETS},
+                          index=index)
+    future = index[2000:]
+    clean = build_features(future, values.iloc[:2000], enhanced=True)
+    values.loc[future, :] = 1e12
+    poisoned = build_features(future, values, enhanced=True)
+    pd.testing.assert_frame_equal(clean, poisoned)
+    assert clean.iloc[-1]["valeur_NO2_past_mean24"] == np.arange(1976, 2000).mean()
+
+
+def test_metric_rejects_missing_predictions_and_misaligned_rows():
+    actual = pd.DataFrame({target: [1., 2.] for target in TARGETS})
+    invalid = actual.copy()
+    invalid.iloc[0, 0] = np.nan
+    with pytest.raises(ValueError, match="finite"):
+        competition_mae(actual, invalid)
+    with pytest.raises(ValueError, match="timestamps"):
+        competition_mae(actual, actual.iloc[::-1])

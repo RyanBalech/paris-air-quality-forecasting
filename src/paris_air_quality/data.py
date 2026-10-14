@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from zipfile import ZipFile
 
+import numpy as np
 import pandas as pd
 
 TARGETS = ("valeur_NO2", "valeur_CO", "valeur_O3", "valeur_PM10", "valeur_PM25")
@@ -36,6 +37,10 @@ def load_competition(path: Path = DEFAULT_ZIP) -> tuple[pd.DataFrame, pd.DataFra
 
 def competition_mae(actual: pd.DataFrame, predicted: pd.DataFrame) -> dict:
     """Mean of five per-target MAEs, scoring only observed validation labels."""
+    if not actual.index.equals(predicted.index):
+        raise ValueError("Prediction timestamps must match actual timestamps exactly")
+    if not np.isfinite(predicted.loc[:, list(TARGETS)].to_numpy()).all():
+        raise ValueError("Predictions must all be finite")
     scores = {}
     for target in TARGETS:
         mask = actual[target].notna()

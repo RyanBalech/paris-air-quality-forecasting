@@ -1,0 +1,516 @@
+{
+  "selected": "regularized",
+  "development_means": {
+    "baseline": 4.884846529679786,
+    "longer_boosting": 4.8762132879381195,
+    "smoothed_history": 4.7509505695033205,
+    "regularized": 4.747287039600524
+  },
+  "data_sha256": "88a8891d6afdf901f55ffac9ca49f48ed763e1772e0fefe3aacd2ee339179c3c",
+  "weather_sha256": "8b80904ced7cd2408f017c81c2aaaca3a311ac6eced4764d52ca4013b63f184b",
+  "source_sha256": {
+    "features.py": "8ac4ecfc35d1cf939c947f75047035bc4d8d213489a7f61323365e36e35d7d6c",
+    "models.py": "27f73c1e4069e0a5266b5502c0174572e01db787a3908fa264414d994989c841",
+    "improve.py": "18c40aa747e9a3b008c65e394a08f6aba6f00193e236f1cba14bfaf4e19b8f6e"
+  },
+  "candidates": {
+    "baseline": {},
+    "longer_boosting": {
+      "n_estimators": 1200
+    },
+    "smoothed_history": {
+      "enhanced": true,
+      "n_estimators": 800
+    },
+    "regularized": {
+      "enhanced": true,
+      "n_estimators": 1200,
+      "num_leaves": 15,
+      "min_child_samples": 120
+    }
+  },
+  "development_folds": [
+    "2023-09-03 22",
+    "2024-03-01 22",
+    "2024-06-01 22",
+    "2024-08-12 22"
+  ],
+  "audit_folds": [
+    "2023-12-01 22",
+    "2024-04-01 22",
+    "2024-07-01 22"
+  ],
+  "audit_means": {
+    "baseline": 4.227956775176858,
+    "regularized": 4.214367645971892
+  },
+  "records": [
+    {
+      "method": "baseline",
+      "cutoff": "2023-09-03 22",
+      "fit_predict_seconds": 19.663626900000963,
+      "score": 5.93299498671381,
+      "per_target": {
+        "valeur_NO2": 10.017424937551082,
+        "valeur_CO": 0.04982251753883815,
+        "valeur_O3": 12.230225370432107,
+        "valeur_PM10": 4.050131208779475,
+        "valeur_PM25": 3.31737089926755
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      },
+      "stage": "development"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2024-03-01 22",
+      "fit_predict_seconds": 19.47955730004469,
+      "score": 5.438984080175026,
+      "per_target": {
+        "valeur_NO2": 7.431796493752097,
+        "valeur_CO": 0.04353771037187527,
+        "valeur_O3": 9.23003536394598,
+        "valeur_PM10": 6.039548259444119,
+        "valeur_PM25": 4.450002573361059
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      },
+      "stage": "development"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2024-06-01 22",
+      "fit_predict_seconds": 19.120027400029358,
+      "score": 3.938545114914528,
+      "per_target": {
+        "valeur_NO2": 3.6117685951618217,
+        "valeur_CO": 0.025600842204778953,
+        "valeur_O3": 8.857745027260373,
+        "valeur_PM10": 4.438835919779823,
+        "valeur_PM25": 2.758775190165846
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      },
+      "stage": "development"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2024-08-12 22",
+      "fit_predict_seconds": 20.813718000019435,
+      "score": 4.228861936915775,
+      "per_target": {
+        "valeur_NO2": 5.6588800500841785,
+        "valeur_CO": 0.030078224936084714,
+        "valeur_O3": 8.63718871857552,
+        "valeur_PM10": 4.065798103486075,
+        "valeur_PM25": 2.7523645874970177
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      },
+      "stage": "development"
+    },
+    {
+      "method": "longer_boosting",
+      "cutoff": "2023-09-03 22",
+      "fit_predict_seconds": 47.68990739999572,
+      "score": 5.8533485379504,
+      "per_target": {
+        "valeur_NO2": 9.765865197022018,
+        "valeur_CO": 0.04850503383646663,
+        "valeur_O3": 12.068532388687373,
+        "valeur_PM10": 4.065556409804081,
+        "valeur_PM25": 3.318283660402061
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      },
+      "stage": "development"
+    },
+    {
+      "method": "longer_boosting",
+      "cutoff": "2024-03-01 22",
+      "fit_predict_seconds": 45.63437270000577,
+      "score": 5.449398091207393,
+      "per_target": {
+        "valeur_NO2": 7.423370412573836,
+        "valeur_CO": 0.043151970041619865,
+        "valeur_O3": 9.19174248240226,
+        "valeur_PM10": 6.1361327344049075,
+        "valeur_PM25": 4.4525928566143405
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      },
+      "stage": "development"
+    },
+    {
+      "method": "longer_boosting",
+      "cutoff": "2024-06-01 22",
+      "fit_predict_seconds": 49.694310699997004,
+      "score": 3.9549140463647645,
+      "per_target": {
+        "valeur_NO2": 3.62870422257145,
+        "valeur_CO": 0.025742713152526558,
+        "valeur_O3": 8.84661742024855,
+        "valeur_PM10": 4.469165398456427,
+        "valeur_PM25": 2.804340477394867
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      },
+      "stage": "development"
+    },
+    {
+      "method": "longer_boosting",
+      "cutoff": "2024-08-12 22",
+      "fit_predict_seconds": 49.07776259997627,
+      "score": 4.247192476229918,
+      "per_target": {
+        "valeur_NO2": 5.721370764551285,
+        "valeur_CO": 0.03025484642601846,
+        "valeur_O3": 8.683169661446406,
+        "valeur_PM10": 4.052885195901883,
+        "valeur_PM25": 2.748281912823993
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      },
+      "stage": "development"
+    },
+    {
+      "method": "smoothed_history",
+      "cutoff": "2023-09-03 22",
+      "fit_predict_seconds": 40.357519099954516,
+      "score": 5.946658826921018,
+      "per_target": {
+        "valeur_NO2": 10.300003820148534,
+        "valeur_CO": 0.05051653725411027,
+        "valeur_O3": 12.18642840873841,
+        "valeur_PM10": 4.05674660282262,
+        "valeur_PM25": 3.1395987656414186
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      },
+      "stage": "development"
+    },
+    {
+      "method": "smoothed_history",
+      "cutoff": "2024-03-01 22",
+      "fit_predict_seconds": 43.28185600001598,
+      "score": 5.2275479368958955,
+      "per_target": {
+        "valeur_NO2": 7.385533551471849,
+        "valeur_CO": 0.04560573981158032,
+        "valeur_O3": 9.604043975508114,
+        "valeur_PM10": 5.213320341794877,
+        "valeur_PM25": 3.8892360758930553
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      },
+      "stage": "development"
+    },
+    {
+      "method": "smoothed_history",
+      "cutoff": "2024-06-01 22",
+      "fit_predict_seconds": 41.24453299999004,
+      "score": 3.6615982372357236,
+      "per_target": {
+        "valeur_NO2": 3.5722035561300514,
+        "valeur_CO": 0.0231796087590912,
+        "valeur_O3": 8.264787040292678,
+        "valeur_PM10": 3.894260413612843,
+        "valeur_PM25": 2.5535605673839545
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      },
+      "stage": "development"
+    },
+    {
+      "method": "smoothed_history",
+      "cutoff": "2024-08-12 22",
+      "fit_predict_seconds": 43.825631899992004,
+      "score": 4.167997276960643,
+      "per_target": {
+        "valeur_NO2": 5.743071072290122,
+        "valeur_CO": 0.02840146288402752,
+        "valeur_O3": 8.609190977255157,
+        "valeur_PM10": 3.767023438295778,
+        "valeur_PM25": 2.6922994340781288
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      },
+      "stage": "development"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2023-09-03 22",
+      "fit_predict_seconds": 51.74108130001696,
+      "score": 5.905387141393686,
+      "per_target": {
+        "valeur_NO2": 10.227354435856638,
+        "valeur_CO": 0.05016303478008751,
+        "valeur_O3": 12.079695795390055,
+        "valeur_PM10": 4.128338610796445,
+        "valeur_PM25": 3.0413838301452047
+      },
+      "observed_rows": {
+        "valeur_NO2": 503,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 351,
+        "valeur_PM25": 504
+      },
+      "stage": "development"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2024-03-01 22",
+      "fit_predict_seconds": 45.28079129999969,
+      "score": 5.220494572208593,
+      "per_target": {
+        "valeur_NO2": 7.220986373599788,
+        "valeur_CO": 0.04517674168118157,
+        "valeur_O3": 9.766736178737368,
+        "valeur_PM10": 5.09018230447372,
+        "valeur_PM25": 3.9793912625509074
+      },
+      "observed_rows": {
+        "valeur_NO2": 489,
+        "valeur_CO": 490,
+        "valeur_O3": 504,
+        "valeur_PM10": 472,
+        "valeur_PM25": 490
+      },
+      "stage": "development"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2024-06-01 22",
+      "fit_predict_seconds": 51.28552400000626,
+      "score": 3.662473527834725,
+      "per_target": {
+        "valeur_NO2": 3.608702305848778,
+        "valeur_CO": 0.02266191584709262,
+        "valeur_O3": 8.156236263121519,
+        "valeur_PM10": 4.011232926818773,
+        "valeur_PM25": 2.5135342275374626
+      },
+      "observed_rows": {
+        "valeur_NO2": 495,
+        "valeur_CO": 504,
+        "valeur_O3": 504,
+        "valeur_PM10": 312,
+        "valeur_PM25": 501
+      },
+      "stage": "development"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2024-08-12 22",
+      "fit_predict_seconds": 49.37532890000148,
+      "score": 4.200792916965089,
+      "per_target": {
+        "valeur_NO2": 5.623624074215156,
+        "valeur_CO": 0.028083762435624493,
+        "valeur_O3": 8.791770033968554,
+        "valeur_PM10": 3.8405141118474195,
+        "valeur_PM25": 2.719972602358688
+      },
+      "observed_rows": {
+        "valeur_NO2": 394,
+        "valeur_CO": 498,
+        "valeur_O3": 504,
+        "valeur_PM10": 282,
+        "valeur_PM25": 491
+      },
+      "stage": "development"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2023-12-01 22",
+      "fit_predict_seconds": 19.851875899999868,
+      "score": 4.190157876376105,
+      "per_target": {
+        "valeur_NO2": 5.364900952775445,
+        "valeur_CO": 0.045880246114168015,
+        "valeur_O3": 7.7810442363120105,
+        "valeur_PM10": 4.427606465081105,
+        "valeur_PM25": 3.331357481597799
+      },
+      "observed_rows": {
+        "valeur_NO2": 504,
+        "valeur_CO": 504,
+        "valeur_O3": 503,
+        "valeur_PM10": 502,
+        "valeur_PM25": 503
+      },
+      "stage": "audit"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2024-04-01 22",
+      "fit_predict_seconds": 21.98556090000784,
+      "score": 4.147605069504143,
+      "per_target": {
+        "valeur_NO2": 4.813684706329335,
+        "valeur_CO": 0.027799313804696964,
+        "valeur_O3": 9.352474551925916,
+        "valeur_PM10": 3.9638846119460327,
+        "valeur_PM25": 2.5801821635147384
+      },
+      "observed_rows": {
+        "valeur_NO2": 498,
+        "valeur_CO": 502,
+        "valeur_O3": 504,
+        "valeur_PM10": 442,
+        "valeur_PM25": 502
+      },
+      "stage": "audit"
+    },
+    {
+      "method": "baseline",
+      "cutoff": "2024-07-01 22",
+      "fit_predict_seconds": 24.46490379999159,
+      "score": 4.3461073796503245,
+      "per_target": {
+        "valeur_NO2": 4.904643742264155,
+        "valeur_CO": 0.029701915023268834,
+        "valeur_O3": 9.49474374797905,
+        "valeur_PM10": 4.924817083086953,
+        "valeur_PM25": 2.376630409898194
+      },
+      "observed_rows": {
+        "valeur_NO2": 502,
+        "valeur_CO": 495,
+        "valeur_O3": 484,
+        "valeur_PM10": 206,
+        "valeur_PM25": 502
+      },
+      "stage": "audit"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2023-12-01 22",
+      "fit_predict_seconds": 44.94041099998867,
+      "score": 4.251649429858838,
+      "per_target": {
+        "valeur_NO2": 5.64588814429469,
+        "valeur_CO": 0.047696723145062576,
+        "valeur_O3": 7.8506069612107625,
+        "valeur_PM10": 4.382402810395207,
+        "valeur_PM25": 3.331652510248465
+      },
+      "observed_rows": {
+        "valeur_NO2": 504,
+        "valeur_CO": 504,
+        "valeur_O3": 503,
+        "valeur_PM10": 502,
+        "valeur_PM25": 503
+      },
+      "stage": "audit"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2024-04-01 22",
+      "fit_predict_seconds": 47.20695089997025,
+      "score": 4.111339773914888,
+      "per_target": {
+        "valeur_NO2": 5.122109832140254,
+        "valeur_CO": 0.02826739718242234,
+        "valeur_O3": 9.250570341020039,
+        "valeur_PM10": 3.916490941787019,
+        "valeur_PM25": 2.2392603574447048
+      },
+      "observed_rows": {
+        "valeur_NO2": 498,
+        "valeur_CO": 502,
+        "valeur_O3": 504,
+        "valeur_PM10": 442,
+        "valeur_PM25": 502
+      },
+      "stage": "audit"
+    },
+    {
+      "method": "regularized",
+      "cutoff": "2024-07-01 22",
+      "fit_predict_seconds": 51.41844600002514,
+      "score": 4.280113734141951,
+      "per_target": {
+        "valeur_NO2": 5.0406869566826,
+        "valeur_CO": 0.031076187525533195,
+        "valeur_O3": 9.364192313766246,
+        "valeur_PM10": 4.818120134607096,
+        "valeur_PM25": 2.1464930781282785
+      },
+      "observed_rows": {
+        "valeur_NO2": 502,
+        "valeur_CO": 495,
+        "valeur_O3": 484,
+        "valeur_PM10": 206,
+        "valeur_PM25": 502
+      },
+      "stage": "audit"
+    }
+  ],
+  "limitations": [
+    "Audit windows are historical, not an independent future test.",
+    "Only three audit windows; no leaderboard score.",
+    "ERA5 weather is assumed known across the forecast horizon."
+  ]
+}

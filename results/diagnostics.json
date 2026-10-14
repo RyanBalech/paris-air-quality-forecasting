@@ -1,0 +1,736 @@
+{
+  "selected": "regularized",
+  "audit_paired_score_deltas": [
+    0.06149155348273272,
+    -0.03626529558925551,
+    -0.06599364550837361
+  ],
+  "mean_delta": -0.013589129204965467,
+  "descriptive_95pct_fold_bootstrap": [
+    -0.06599364550837361,
+    0.06149155348273272
+  ],
+  "caveat": "Only three historical windows; interval is descriptive and not strong evidence of generalization. Negative delta favors the selected model.",
+  "per_week_target": [
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 4.851765000854734,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 5.245928199252644,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 5.997009658218956,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.037407272184698935,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.030087296432063124,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.07014616972574202,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 8.914176542612672,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 7.230970199702862,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 7.194494599736117,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 3.572492922023846,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 4.613038453539804,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 5.087108096548034,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 3.070090292353199,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 3.002154763227835,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 3.9202722273716195,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 4.730105067550464,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 5.141602695849792,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 7.065956669483812,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.03861305356584852,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.03410299004087013,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.07037412582846911,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 7.813422043755129,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 8.184202579550162,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 7.552421345950443,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 3.3252554620451176,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 4.461914419099309,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 5.347453462560835,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 2.6740165968679688,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 2.8889635068146027,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2023-12-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 4.428062927578416,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 5.4258327934059505,
+      "observed_rows": 164
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 5.8666021878422265,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 3.1757288241168062,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.026384247894600366,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.03398801709111128,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.023034149876942668,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 10.297624616377698,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 12.020235861564412,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 5.739563177835636,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 4.424766189269395,
+      "observed_rows": 153
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 3.729655092671481,
+      "observed_rows": 121
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 3.7128541982659518,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 2.344804972123901,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 2.3313993261143184,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 3.0613804918607523,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 5.339118406106291,
+      "observed_rows": 164
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 6.516776194669923,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 3.532204937435757,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.02630109834516261,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.03703187143450547,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.021480996012133397,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 10.280977931567204,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 11.728100850863663,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 5.742632240629247,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 4.270465978464668,
+      "observed_rows": 153
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 3.9957943993573424,
+      "observed_rows": 121
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 3.5370034478722023,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 2.237356543293409,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 2.3854818804143236,
+      "observed_rows": 166
+    },
+    {
+      "cutoff": "2024-04-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 2.096683381042686,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 2.3893594418055453,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 6.510612852152569,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 5.808546342414293,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.01946637765823101,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.028904616561377633,
+      "observed_rows": 159
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.04069203843259647,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 7.09121266555025,
+      "observed_rows": 149
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 9.019331757074678,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 12.099029067996444,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 3.257152981322288,
+      "observed_rows": 55
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 6.180772757835625,
+      "observed_rows": 97
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 4.367295326539458,
+      "observed_rows": 54
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 2.0828998179322995,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 2.7794053717896445,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "baseline",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 2.2693449057927944,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 1,
+      "mae": 2.5182284335038525,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 2,
+      "mae": 6.6493832564519675,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_NO2",
+      "horizon_week": 3,
+      "mae": 5.9490101192383555,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 1,
+      "mae": 0.01999386389599904,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 2,
+      "mae": 0.033048330786416474,
+      "observed_rows": 159
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_CO",
+      "horizon_week": 3,
+      "mae": 0.040292018426017026,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 1,
+      "mae": 6.112307976013406,
+      "observed_rows": 149
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 2,
+      "mae": 8.709162459938721,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_O3",
+      "horizon_week": 3,
+      "mae": 12.899434884685114,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 1,
+      "mae": 3.3151545205756054,
+      "observed_rows": 55
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 2,
+      "mae": 5.441684306697168,
+      "observed_rows": 97
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM10",
+      "horizon_week": 3,
+      "mae": 5.228812432366266,
+      "observed_rows": 54
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 1,
+      "mae": 2.1532576258700504,
+      "observed_rows": 168
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 2,
+      "mae": 2.35645984104673,
+      "observed_rows": 167
+    },
+    {
+      "cutoff": "2024-07-01 22",
+      "method": "regularized",
+      "target": "valeur_PM25",
+      "horizon_week": 3,
+      "mae": 1.9297212611941508,
+      "observed_rows": 167
+    }
+  ]
+}
