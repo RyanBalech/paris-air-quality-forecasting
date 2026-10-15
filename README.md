@@ -2,6 +2,49 @@
 
 Reproducible forecasts for the [X/HEC Paris air-quality challenge](https://www.kaggle.com/competitions/x-hec-ts-2025-predicting-air-quality-in-paris). The task is to predict 504 hourly values for NO₂, CO, O₃, PM10 and PM2.5. The challenge scores the mean of five pollutant-specific MAEs. It closed on **October 15, 2025**, so this repository reports local backtests rather than a current leaderboard rank.
 
+## Pollutant-history-only assignment
+
+The [executed notebook](notebooks/paris_air_quality_assignment.ipynb) and
+[short report](docs/assignment/report.pdf) compare persistence, a 168-hour seasonal
+naive forecast, a dataset-trained LSTM, and independent and joint zero-shot
+Chronos-2 forecasts. This is a separate protocol from the weather-enabled Kaggle
+study below: it does **not** use observed weather from the validation or test period.
+Each method forecasts the same final 504 training hours using only earlier pollutant
+observations. Missing validation labels are excluded from the corresponding MAE.
+
+| Method | Mean validation MAE | NO2 | CO | O3 | PM10 | PM2.5 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Chronos-2, independent | **5.701** | 7.206 | 0.046 | 12.970 | 5.054 | 3.228 |
+| Chronos-2, joint | 5.854 | 7.451 | 0.041 | 13.106 | 5.315 | 3.359 |
+| Joint LSTM | 6.504 | 7.700 | 0.032 | 16.348 | 5.158 | 3.282 |
+| Persistence | 6.699 | 7.429 | 0.046 | 16.160 | 5.622 | 4.237 |
+| Seasonal naive, 168 hours | 6.872 | 7.429 | 0.044 | 17.290 | 6.044 | 3.555 |
+
+These are local results on **one** 21-day validation window, so they do not
+establish performance across seasons or a Kaggle rank. The independent
+Chronos-2 forecast was selected by mean validation MAE and exported as the
+[assignment submission](deliverables/assignment_submission.csv). The [complete report](docs/assignment/report.md)
+contains figures, weekly errors, model settings, resource measurements, and
+limitations. The notebook is ready for Google Colab but the recorded run used a
+local RTX 4050; a Colab run is not claimed.
+
+To reproduce, place the original competition ZIP at `data/raw/competition.zip`,
+install the optional dependencies, and run:
+
+```bash
+python -m pip install -e ".[dev,assignment]"
+python -m paris_air_quality.assignment
+python -m paris_air_quality.assignment_report
+python scripts/render_assignment_pdf.py
+```
+
+The Chronos-2 checkpoint revision is pinned in
+[`assignment.py`](src/paris_air_quality/assignment.py). The
+[validation record](results/assignment_validation.json) includes exact scores,
+settings, runtimes, and the input ZIP hash. Intermediate forecasts and caches
+stay under the ignored `outputs/assignment/` directory; raw competition data is
+never committed.
+
 ## Approach
 
 The initial experiments compare a seasonal median, a calendar-and-history LightGBM model, and a weather-aware LightGBM model. Each model forecasts the entire 21-day window directly. Pollution lag features begin at 504 hours, so every value they read is known at the forecast origin. ERA5 weather for Paris comes from [Open-Meteo's historical weather API](https://open-meteo.com/en/docs/historical-weather-api); the challenge explicitly permits weather for the test period as if perfectly forecast. No pollutant measurements from the test period are used.
