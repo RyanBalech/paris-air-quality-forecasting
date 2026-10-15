@@ -1,0 +1,28 @@
+{
+  "folds": [
+    {
+      "cutoff": "2023-10-01 22",
+      "baseline": 6.468306936850519,
+      "selected": 6.09691164271539,
+      "delta": -0.3713952941351293
+    },
+    {
+      "cutoff": "2024-01-01 22",
+      "baseline": 5.231645583858294,
+      "selected": 5.183694985023498,
+      "delta": -0.047950598834795244
+    },
+    {
+      "cutoff": "2024-05-01 22",
+      "baseline": 4.518645943574429,
+      "selected": 4.327155814182835,
+      "delta": -0.19149012939159338
+    }
+  ],
+  "mean_delta": -0.2036120074538393,
+  "descriptive_95pct_fold_bootstrap": [
+    -0.3713952941351293,
+    -0.047950598834795244
+  ],
+  "caveat": "Only three audit windows; historical reuse and model selection limit inference."
+}

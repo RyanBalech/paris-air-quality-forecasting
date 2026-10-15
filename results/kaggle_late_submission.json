@@ -1,0 +1,11 @@
+{
+  "competition": "x-hec-ts-2025-predicting-air-quality-in-paris",
+  "submission_file": "outputs/submission_deep.csv",
+  "submission_sha256": "ab461072034cacee9322e471242a77e348d0a88a6101f555153e9f38dbb437ce",
+  "status": "Complete (after deadline)",
+  "public_score": 3.95159,
+  "private_score": 5.40122,
+  "score_reported_date": "2026-10-15",
+  "source": "Score and status supplied by the submitter from the Kaggle interface; API access was unavailable for independent verification",
+  "rank": null
+}

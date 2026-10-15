@@ -16,6 +16,78 @@ Four rolling-origin backtests use complete 504-hour windows. Missing historical 
 
 The weather model improves the local mean by about 33% relative to the seasonal median. [Per-fold and per-pollutant results](results/backtest.json) show where it helps and where errors remain high, especially O₃ and NO₂. Short weather lags improved all four backtests relative to the initial weather model (4.925), but this feature choice used those same windows. The validation windows are not independent and the result does not establish leaderboard performance.
 
+## Further model experiments
+
+Four configurations were compared on the original development windows. The selected
+configuration was then locked before evaluation on three additional historical windows.
+It adds smoother pollution histories and longer weather summaries, with smaller trees.
+
+| Configuration | Development MAE (4 windows) | Audit MAE (3 windows) |
+| --- | ---: | ---: |
+| Original weather baseline | 4.8848 | 4.2280 |
+| More boosting iterations | 4.8762 | — |
+| Smoothed history and weather summaries | 4.7510 | — |
+| Summaries with smaller trees, selected | **4.7473** | **4.2144** |
+
+The selected model reduced development MAE by 2.8%, but the audit gain was only
+0.32%. It improved April and July and regressed in December. A descriptive paired
+bootstrap interval for its audit score change is **[-0.0660, +0.0615]**, including
+zero; three windows do not establish a reliable generalization gain. Audit fitting
+and prediction averaged 47.9 seconds per window versus 22.1 seconds for the baseline
+on the development machine, using four LightGBM threads. The faster baseline remains
+the default; `lightgbm_regularized` exposes the selected candidate explicitly.
+
+On the audit windows, the candidate improved PM2.5, PM10 and O3 but worsened NO2
+and CO. The largest remaining mean pollutant error is O3 (8.82), followed by NO2
+(5.27). See the [complete search report](results/improvement.json),
+[errors by forecast week](results/diagnostics.json), and
+[validation protocol](docs/validation.md). Unselected candidates were not evaluated
+on the audit windows. These are local historical estimates, not Kaggle test scores.
+
+## Broader forecasting study
+
+The next study tested a different model family, separate models for each forecast
+week, additional dispersion weather, French holidays, and a weather-only variant.
+Predictions from the earlier models were reused when their source and input hashes
+matched. A model or equal-weight pair was selected separately for each pollutant
+using only the four development windows. The recipe was then locked before scoring
+three new historical audit periods: October 2023, January 2024 and May 2024.
+
+| Model | Development MAE, four windows | New audit MAE, three windows |
+| --- | ---: | ---: |
+| Original weather baseline | 4.885 | 5.406 |
+| Regularized LightGBM | 4.747 | — |
+| Additional weather and holidays | 4.702 | — |
+| Weather only, without pollutant lags | 4.647 | 5.256 |
+| CatBoost | 4.695 | 5.271 |
+| Separate weekly models | 4.688 | 5.296 |
+| Selected pollutant-specific blend | **4.599** | **5.203** |
+
+The blend improves on the baseline in all three new audit windows. Mean audit MAE
+falls by **3.8%**. NO2, CO, O3 and PM2.5 improve; PM10 is almost unchanged and
+slightly worse. A paired fold bootstrap gives a descriptive 95% interval of
+**[-0.371, -0.048] MAE** for the change. Only three historical audit periods were
+available, so this interval does not establish performance across future conditions.
+The selected components are also more expensive: CatBoost averaged 269 seconds per
+validation window, versus 28 seconds for weather-only LightGBM on the development
+machine. The command-line default remains the faster baseline; the selected blend
+can be reproduced separately with the optional research dependencies.
+
+![Local audit comparison](docs/figures/deep_audit.png)
+
+See the [study protocol and caveats](docs/deep-study.md),
+[complete results](results/deep_study.json), and
+[audit diagnostics](results/deep_diagnostics.json). The old and new audit scores
+refer to different cutoffs and should not be compared as if they were the same test.
+
+The selected `submission_deep.csv` was uploaded after the competition deadline.
+The submitter reported Kaggle UI scores of **3.95159 public** and **5.40122 private**
+on October 15, 2026. The exact submitted file is identified by SHA-256 in the
+[late-submission record](results/kaggle_late_submission.json). Kaggle API access was
+not available here to independently verify the UI result. No rank is claimed. The
+public score covers the first forecast week; the full evaluation spans three weeks,
+so these scores should not be compared directly with the local historical MAEs.
+
 ## Reproduce
 
 Python 3.10+ is required. Download the competition ZIP from Kaggle and put it at `data/raw/competition.zip`; raw competition data and weather caches are excluded from Git.
@@ -28,6 +100,33 @@ paris-air submit --method lightgbm_weather
 python -m pytest -q
 ```
 
+Reproduce model selection, the reserved-window audit, and diagnostics:
+
+```bash
+python -m paris_air_quality.improve
+python -m paris_air_quality.diagnostics
+```
+
+This saves each completed validation fit for reuse and writes the selected model's
+submission to `outputs/submission_improved.csv`, preserving the original submission.
+To fit only the selected candidate and generate predictions:
+
+```bash
+paris-air submit --method lightgbm_regularized --output outputs/submission_improved.csv
+```
+
+To reproduce the broader study and its selected blend:
+
+```bash
+python -m pip install -e ".[dev,research]"
+python -m paris_air_quality.advanced_weather
+python -m paris_air_quality.deep_study
+python -m paris_air_quality.deep_report
+python -m paris_air_quality.predict_blend --report results/deep_study.json
+```
+
+`predict_blend` fits only the selected recipe and writes `outputs/submission_deep.csv`.
+
 `fetch-weather` downloads only weather variables from Open-Meteo's ERA5 archive for Paris and caches them in `data/cache/`. The backtest writes a JSON report to `outputs/backtest.json`; the submission command writes a 504-row CSV to `outputs/submission.csv`. Both directories are ignored by Git. The script checks the competition's exact column order and test IDs before writing a submission.
 
 The four validation cutoffs are specified in [`experiment.py`](src/paris_air_quality/experiment.py). Model settings and feature definitions are in [`models.py`](src/paris_air_quality/models.py) and [`features.py`](src/paris_air_quality/features.py). The archived [backtest report](results/backtest.json) includes input file hashes.
@@ -38,5 +137,6 @@ The four validation cutoffs are specified in [`experiment.py`](src/paris_air_qua
 - Historical ERA5 is treated as perfectly known future weather, which follows the challenge's stated allowance but is optimistic for operational forecasting.
 - The provided pollutant series has long missing intervals, particularly CO in 2021. Scores use available validation labels only.
 - The timestamps are continuous hourly strings without explicit timezone information. Weather is aligned to GMT; this assumption should be checked before any operational use.
-- Feature choices were informed by the reported validation windows. An untouched holdout would be needed for an unbiased estimate of the final model-selection step.
-- No model is judged by the hidden test labels in this repository.
+- Feature choices used the four development windows. Three additional audit windows were reserved for the latest selection, but remain historical and few in number; this is not an untouched chronological test of the entire research process.
+- Model selection used local historical windows only. The later Kaggle score was observed after the recipe and submitted CSV were finalized.
+- The official competition ended in October 2025. This after-deadline result does not establish a placement in the original competition rankings.

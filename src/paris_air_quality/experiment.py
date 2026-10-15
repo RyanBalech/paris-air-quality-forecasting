@@ -17,7 +17,7 @@ from .weather import load_weather
 FOLDS = (
     "2023-09-03 22", "2024-03-01 22", "2024-06-01 22", "2024-08-12 22",
 )
-METHODS = ("seasonal_median", "lightgbm_calendar", "lightgbm_weather")
+METHODS = ("seasonal_median", "lightgbm_calendar", "lightgbm_weather", "lightgbm_regularized")
 
 
 def forecast(method: str, history: pd.DataFrame, future: pd.DatetimeIndex,
@@ -26,9 +26,12 @@ def forecast(method: str, history: pd.DataFrame, future: pd.DatetimeIndex,
         return seasonal_median(history, future)
     if method == "lightgbm_calendar":
         return direct_lightgbm(history, future)
-    if method == "lightgbm_weather":
+    if method in ("lightgbm_weather", "lightgbm_regularized"):
         if weather is None:
-            raise ValueError("Weather cache is required for lightgbm_weather")
+            raise ValueError(f"Weather cache is required for {method}")
+        if method == "lightgbm_regularized":
+            return direct_lightgbm(history, future, weather, enhanced=True, n_estimators=1200,
+                                   num_leaves=15, min_child_samples=120)
         return direct_lightgbm(history, future, weather)
     raise ValueError(f"Unknown method: {method}")
 
@@ -63,6 +66,9 @@ def backtest(zip_path: Path, weather_path: Path, output: Path,
               "weather_cache_sha256": hashlib.sha256(weather_path.read_bytes()).hexdigest(),
               "model_settings": {"train_years": 3, "n_estimators": 500,
                                  "objective": "regression_l1", "random_state": 42},
+              "method_overrides": {"lightgbm_regularized": {
+                  "enhanced": True, "n_estimators": 1200,
+                  "num_leaves": 15, "min_child_samples": 120}},
               "weather_features": "current conditions, 3/6/24-hour lags, 6/24-hour means",
               "software": {"python": platform.python_version(),
                            **{name: version(name) for name in
@@ -77,7 +83,8 @@ def backtest(zip_path: Path, weather_path: Path, output: Path,
 
 def submission(zip_path: Path, weather_path: Path, method: str, output: Path) -> Path:
     train, test, sample = load_competition(zip_path)
-    weather = load_weather(weather_path) if method == "lightgbm_weather" else None
+    weather = load_weather(weather_path) if method in (
+        "lightgbm_weather", "lightgbm_regularized") else None
     prediction = forecast(method, train, test.index, weather)
     result = sample.copy()
     for target in TARGETS:

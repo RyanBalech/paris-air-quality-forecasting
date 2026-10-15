@@ -12,6 +12,7 @@ dependencies = ["numpy>=1.26,<2.4", "pandas>=2.1,<3", "scikit-learn>=1.4,<2", "l
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9", "ruff>=0.8,<1"]
+research = ["catboost>=1.2.8,<2", "holidays>=0.60,<1", "matplotlib>=3.8,<4"]
 
 [project.scripts]
 paris-air = "paris_air_quality.cli:main"

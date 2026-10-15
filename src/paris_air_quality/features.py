@@ -11,7 +11,7 @@ TARGET_LAGS = (504, 672, 840, 1008, 1176, 1344)
 
 
 def build_features(index: pd.DatetimeIndex, known_targets: pd.DataFrame,
-                   weather: pd.DataFrame | None = None) -> pd.DataFrame:
+                   weather: pd.DataFrame | None = None, *, enhanced: bool = False) -> pd.DataFrame:
     """Build features; all pollutant lags are at least the forecast horizon."""
     if any(lag < HORIZON_HOURS for lag in TARGET_LAGS):
         raise AssertionError("Target lag would leak future validation labels")
@@ -35,6 +35,17 @@ def build_features(index: pd.DatetimeIndex, known_targets: pd.DataFrame,
         for lag in TARGET_LAGS:
             x[f"{target}_lag_{lag}"] = known_targets[target].reindex(
                 index - pd.Timedelta(hours=lag)).to_numpy()
+    if enhanced:
+        extra = {}
+        for target in TARGETS:
+            series = known_targets[target]
+            for window in (24, 168, 672):
+                extra[f"{target}_past_mean{window}"] = series.rolling(
+                    window, min_periods=window // 2).mean().reindex(
+                        index - pd.Timedelta(hours=HORIZON_HOURS)).to_numpy()
+            lag_columns = [f"{target}_lag_{lag}" for lag in TARGET_LAGS]
+            extra[f"{target}_weekly_median"] = x[lag_columns].median(axis=1)
+        x = pd.concat([x, pd.DataFrame(extra, index=index)], axis=1)
     if weather is not None:
         w = weather.reindex(index)
         for column in w.columns:
@@ -52,4 +63,11 @@ def build_features(index: pd.DatetimeIndex, known_targets: pd.DataFrame,
             ).reindex(index).to_numpy()
             x[f"weather_{column}_mean24"] = series.rolling(24, min_periods=12).mean(
             ).reindex(index).to_numpy()
+        if enhanced:
+            extra = {}
+            for column in w.columns:
+                for window in (48, 168):
+                    extra[f"weather_{column}_mean{window}"] = weather[column].rolling(
+                        window, min_periods=window // 2).mean().reindex(index).to_numpy()
+            x = pd.concat([x, pd.DataFrame(extra, index=index)], axis=1)
     return x.astype("float32")
