@@ -80,6 +80,14 @@ See the [study protocol and caveats](docs/deep-study.md),
 [audit diagnostics](results/deep_diagnostics.json). The old and new audit scores
 refer to different cutoffs and should not be compared as if they were the same test.
 
+The selected `submission_deep.csv` was uploaded after the competition deadline.
+The submitter reported Kaggle UI scores of **3.95159 public** and **5.40122 private**
+on October 15, 2026. The exact submitted file is identified by SHA-256 in the
+[late-submission record](results/kaggle_late_submission.json). Kaggle API access was
+not available here to independently verify the UI result. No rank is claimed. The
+public score covers the first forecast week; the full evaluation spans three weeks,
+so these scores should not be compared directly with the local historical MAEs.
+
 ## Reproduce
 
 Python 3.10+ is required. Download the competition ZIP from Kaggle and put it at `data/raw/competition.zip`; raw competition data and weather caches are excluded from Git.
@@ -130,5 +138,5 @@ The four validation cutoffs are specified in [`experiment.py`](src/paris_air_qua
 - The provided pollutant series has long missing intervals, particularly CO in 2021. Scores use available validation labels only.
 - The timestamps are continuous hourly strings without explicit timezone information. Weather is aligned to GMT; this assumption should be checked before any operational use.
 - Feature choices used the four development windows. Three additional audit windows were reserved for the latest selection, but remain historical and few in number; this is not an untouched chronological test of the entire research process.
-- No model is judged by the hidden test labels in this repository.
-- The official competition ended in October 2025. Local historical MAE is not an official leaderboard score or rank. The competition page displays a late-submission option, but no late score has been obtained here.
+- Model selection used local historical windows only. The later Kaggle score was observed after the recipe and submitted CSV were finalized.
+- The official competition ended in October 2025. This after-deadline result does not establish a placement in the original competition rankings.

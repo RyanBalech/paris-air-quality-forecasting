@@ -27,8 +27,9 @@ of test-period pollutant concentrations. It also states that missing hidden-test
 labels were imputed using QOLMAT. Local validation here scores observed labels only;
 its target distribution therefore cannot exactly reproduce the hidden evaluation.
 The public leaderboard used the first week, while final evaluation used all three.
-The page advertises late submission, but no late score has been obtained for this
-repository and an official new competition placement is not claimed.
+The page advertises late submission. The selected file was later submitted after
+the deadline; the score appears in the results section below. An official new
+competition placement is not claimed.
 
 ## Additional features and models
 
@@ -94,9 +95,13 @@ audit set; their means must not be mixed into a single head-to-head comparison.
 
 The same published [competition rules](https://www.kaggle.com/competitions/x-hec-ts-2025-predicting-air-quality-in-paris)
 allow future weather and holidays, and exclude direct test-period pollutant data.
-No external test-period pollutant measurements were used in this study. The closed
-competition's late-submission control does not give this repository an official
-historical placement or an independent hidden score.
+No external test-period pollutant measurements were used in this study. After the
+recipe and submission file were finalized, the submitter reported Kaggle scores of
+3.95159 public and 5.40122 private. The scores did not influence model selection.
+Their source is the user's Kaggle UI report; independent API verification was
+unavailable. The [file hash and score provenance](../results/kaggle_late_submission.json)
+connect the reported score to the submitted CSV. This after-deadline result does
+not establish a place in the original competition rankings.
 
 ## Reproduce
 
