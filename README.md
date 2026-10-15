@@ -44,6 +44,42 @@ and CO. The largest remaining mean pollutant error is O3 (8.82), followed by NO2
 [validation protocol](docs/validation.md). Unselected candidates were not evaluated
 on the audit windows. These are local historical estimates, not Kaggle test scores.
 
+## Broader forecasting study
+
+The next study tested a different model family, separate models for each forecast
+week, additional dispersion weather, French holidays, and a weather-only variant.
+Predictions from the earlier models were reused when their source and input hashes
+matched. A model or equal-weight pair was selected separately for each pollutant
+using only the four development windows. The recipe was then locked before scoring
+three new historical audit periods: October 2023, January 2024 and May 2024.
+
+| Model | Development MAE, four windows | New audit MAE, three windows |
+| --- | ---: | ---: |
+| Original weather baseline | 4.885 | 5.406 |
+| Regularized LightGBM | 4.747 | — |
+| Additional weather and holidays | 4.702 | — |
+| Weather only, without pollutant lags | 4.647 | 5.256 |
+| CatBoost | 4.695 | 5.271 |
+| Separate weekly models | 4.688 | 5.296 |
+| Selected pollutant-specific blend | **4.599** | **5.203** |
+
+The blend improves on the baseline in all three new audit windows. Mean audit MAE
+falls by **3.8%**. NO2, CO, O3 and PM2.5 improve; PM10 is almost unchanged and
+slightly worse. A paired fold bootstrap gives a descriptive 95% interval of
+**[-0.371, -0.048] MAE** for the change. Only three historical audit periods were
+available, so this interval does not establish performance across future conditions.
+The selected components are also more expensive: CatBoost averaged 269 seconds per
+validation window, versus 28 seconds for weather-only LightGBM on the development
+machine. The command-line default remains the faster baseline; the selected blend
+can be reproduced separately with the optional research dependencies.
+
+![Local audit comparison](docs/figures/deep_audit.png)
+
+See the [study protocol and caveats](docs/deep-study.md),
+[complete results](results/deep_study.json), and
+[audit diagnostics](results/deep_diagnostics.json). The old and new audit scores
+refer to different cutoffs and should not be compared as if they were the same test.
+
 ## Reproduce
 
 Python 3.10+ is required. Download the competition ZIP from Kaggle and put it at `data/raw/competition.zip`; raw competition data and weather caches are excluded from Git.
@@ -71,6 +107,18 @@ To fit only the selected candidate and generate predictions:
 paris-air submit --method lightgbm_regularized --output outputs/submission_improved.csv
 ```
 
+To reproduce the broader study and its selected blend:
+
+```bash
+python -m pip install -e ".[dev,research]"
+python -m paris_air_quality.advanced_weather
+python -m paris_air_quality.deep_study
+python -m paris_air_quality.deep_report
+python -m paris_air_quality.predict_blend --report results/deep_study.json
+```
+
+`predict_blend` fits only the selected recipe and writes `outputs/submission_deep.csv`.
+
 `fetch-weather` downloads only weather variables from Open-Meteo's ERA5 archive for Paris and caches them in `data/cache/`. The backtest writes a JSON report to `outputs/backtest.json`; the submission command writes a 504-row CSV to `outputs/submission.csv`. Both directories are ignored by Git. The script checks the competition's exact column order and test IDs before writing a submission.
 
 The four validation cutoffs are specified in [`experiment.py`](src/paris_air_quality/experiment.py). Model settings and feature definitions are in [`models.py`](src/paris_air_quality/models.py) and [`features.py`](src/paris_air_quality/features.py). The archived [backtest report](results/backtest.json) includes input file hashes.
@@ -83,3 +131,4 @@ The four validation cutoffs are specified in [`experiment.py`](src/paris_air_qua
 - The timestamps are continuous hourly strings without explicit timezone information. Weather is aligned to GMT; this assumption should be checked before any operational use.
 - Feature choices used the four development windows. Three additional audit windows were reserved for the latest selection, but remain historical and few in number; this is not an untouched chronological test of the entire research process.
 - No model is judged by the hidden test labels in this repository.
+- The official competition ended in October 2025. Local historical MAE is not an official leaderboard score or rank. The competition page displays a late-submission option, but no late score has been obtained here.
