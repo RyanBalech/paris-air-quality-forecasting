@@ -1,0 +1,482 @@
+{
+  "protocol": {
+    "validation_start": "2024-08-13 23:00:00",
+    "validation_end": "2024-09-03 22:00:00",
+    "forecast_hours": 504,
+    "forecast_origin": "2024-08-13 22:00:00",
+    "targets": [
+      "valeur_NO2",
+      "valeur_CO",
+      "valeur_O3",
+      "valeur_PM10",
+      "valeur_PM25"
+    ],
+    "metric": "mean of five observed-label MAEs",
+    "future_weather": false
+  },
+  "data": {
+    "train_rows": 40991,
+    "test_rows": 504,
+    "missing_train": {
+      "valeur_NO2": 3297,
+      "valeur_CO": 12529,
+      "valeur_O3": 693,
+      "valeur_PM10": 7167,
+      "valeur_PM25": 1791
+    },
+    "missing_validation": {
+      "valeur_NO2": 110,
+      "valeur_CO": 6,
+      "valeur_O3": 0,
+      "valeur_PM10": 205,
+      "valeur_PM25": 13
+    },
+    "train_sha256": "88a8891d6afdf901f55ffac9ca49f48ed763e1772e0fefe3aacd2ee339179c3c"
+  },
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5"
+  },
+  "methods": {
+    "persistence": {
+      "validation": {
+        "score": 6.698695194287649,
+        "per_target": {
+          "valeur_NO2": 7.428680203045685,
+          "valeur_CO": 0.04580722891566265,
+          "valeur_O3": 16.159920634920635,
+          "valeur_PM10": 5.622408026755854,
+          "valeur_PM25": 4.236659877800407
+        },
+        "observed_rows": {
+          "valeur_NO2": 394,
+          "valeur_CO": 498,
+          "valeur_O3": 504,
+          "valeur_PM10": 299,
+          "valeur_PM25": 491
+        },
+        "week_mae": {
+          "1": {
+            "score": 6.334612934447955,
+            "per_target": {
+              "valeur_NO2": 6.614935064935065,
+              "valeur_CO": 0.025820987654320986,
+              "valeur_O3": 14.373214285714287,
+              "valeur_PM10": 6.2227848101265835,
+              "valeur_PM25": 4.436309523809523
+            },
+            "observed_rows": {
+              "valeur_NO2": 154,
+              "valeur_CO": 162,
+              "valeur_O3": 168,
+              "valeur_PM10": 79,
+              "valeur_PM25": 168
+            }
+          },
+          "2": {
+            "score": 6.9689828775945655,
+            "per_target": {
+              "valeur_NO2": 8.338620689655173,
+              "valeur_CO": 0.04004761904761905,
+              "valeur_O3": 17.336904761904766,
+              "valeur_PM10": 5.0,
+              "valeur_PM25": 4.129341317365269
+            },
+            "observed_rows": {
+              "valeur_NO2": 145,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 93,
+              "valeur_PM25": 167
+            }
+          },
+          "3": {
+            "score": 6.808138476453095,
+            "per_target": {
+              "valeur_NO2": 7.3589473684210525,
+              "valeur_CO": 0.07083928571428572,
+              "valeur_O3": 16.76964285714286,
+              "valeur_PM10": 5.704724409448819,
+              "valeur_PM25": 4.136538461538462
+            },
+            "observed_rows": {
+              "valeur_NO2": 95,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 127,
+              "valeur_PM25": 156
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 0.015828299918211997,
+      "settings": {}
+    },
+    "seasonal_naive_168h": {
+      "validation": {
+        "score": 6.872438421044299,
+        "per_target": {
+          "valeur_NO2": 7.428680203045685,
+          "valeur_CO": 0.04449397590361446,
+          "valeur_O3": 17.28988095238095,
+          "valeur_PM10": 6.044147157190635,
+          "valeur_PM25": 3.554989816700611
+        },
+        "observed_rows": {
+          "valeur_NO2": 394,
+          "valeur_CO": 498,
+          "valeur_O3": 504,
+          "valeur_PM10": 299,
+          "valeur_PM25": 491
+        },
+        "week_mae": {
+          "1": {
+            "score": 6.565897603927562,
+            "per_target": {
+              "valeur_NO2": 6.614935064935065,
+              "valeur_CO": 0.0339320987654321,
+              "valeur_O3": 17.672619047619047,
+              "valeur_PM10": 5.654430379746835,
+              "valeur_PM25": 2.8535714285714286
+            },
+            "observed_rows": {
+              "valeur_NO2": 154,
+              "valeur_CO": 162,
+              "valeur_O3": 168,
+              "valeur_PM10": 79,
+              "valeur_PM25": 168
+            }
+          },
+          "2": {
+            "score": 6.704127681535072,
+            "per_target": {
+              "valeur_NO2": 8.338620689655173,
+              "valeur_CO": 0.03932142857142856,
+              "valeur_O3": 17.614880952380954,
+              "valeur_PM10": 5.187096774193549,
+              "valeur_PM25": 2.3407185628742515
+            },
+            "observed_rows": {
+              "valeur_NO2": 145,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 93,
+              "valeur_PM25": 167
+            }
+          },
+          "3": {
+            "score": 7.305074210928595,
+            "per_target": {
+              "valeur_NO2": 7.3589473684210525,
+              "valeur_CO": 0.059851190476190474,
+              "valeur_O3": 16.58214285714286,
+              "valeur_PM10": 6.914173228346459,
+              "valeur_PM25": 5.610256410256411
+            },
+            "observed_rows": {
+              "valeur_NO2": 95,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 127,
+              "valeur_PM25": 156
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 0.005680599948391318,
+      "settings": {}
+    },
+    "lstm_joint": {
+      "validation": {
+        "score": 6.503962330990309,
+        "per_target": {
+          "valeur_NO2": 7.6999516172457465,
+          "valeur_CO": 0.031501966081709264,
+          "valeur_O3": 16.347863000536723,
+          "valeur_PM10": 5.158406414555067,
+          "valeur_PM25": 3.282088656532303
+        },
+        "observed_rows": {
+          "valeur_NO2": 394,
+          "valeur_CO": 498,
+          "valeur_O3": 504,
+          "valeur_PM10": 299,
+          "valeur_PM25": 491
+        },
+        "week_mae": {
+          "1": {
+            "score": 5.711546176346026,
+            "per_target": {
+              "valeur_NO2": 6.334780738880107,
+              "valeur_CO": 0.027781444951340006,
+              "valeur_O3": 15.263804199582053,
+              "valeur_PM10": 4.0400149260895155,
+              "valeur_PM25": 2.8913495722271145
+            },
+            "observed_rows": {
+              "valeur_NO2": 154,
+              "valeur_CO": 162,
+              "valeur_O3": 168,
+              "valeur_PM10": 79,
+              "valeur_PM25": 168
+            }
+          },
+          "2": {
+            "score": 6.317703353228642,
+            "per_target": {
+              "valeur_NO2": 9.424129247994259,
+              "valeur_CO": 0.02795390398161752,
+              "valeur_O3": 17.174620823633102,
+              "valeur_PM10": 3.0348664663171254,
+              "valeur_PM25": 1.9269463242171057
+            },
+            "observed_rows": {
+              "valeur_NO2": 145,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 93,
+              "valeur_PM25": 167
+            }
+          },
+          "3": {
+            "score": 7.297568270902843,
+            "per_target": {
+              "valeur_NO2": 7.281325920506526,
+              "valeur_CO": 0.03863767355751423,
+              "valeur_O3": 16.605163978395005,
+              "valeur_PM10": 7.409131948215754,
+              "valeur_PM25": 5.153581833839416
+            },
+            "observed_rows": {
+              "valeur_NO2": 95,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 127,
+              "valeur_PM25": 156
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 19.64455840003211,
+      "settings": {
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "torch": "2.14.1+cu130",
+        "epochs": 8,
+        "seed": 42,
+        "training_windows": 1445,
+        "training_losses": [
+          0.6894146700700124,
+          0.647677461306254,
+          0.5935119787851969,
+          0.560551588733991,
+          0.5475851893424988,
+          0.531330848733584,
+          0.5292403797308604,
+          0.526777446269989
+        ],
+        "context_length": 168,
+        "block_length": 24,
+        "stride": 12,
+        "training_hours": 17520,
+        "gpu_peak_mb": 179.0
+      }
+    },
+    "chronos2_independent": {
+      "validation": {
+        "score": 5.700990222757602,
+        "per_target": {
+          "valeur_NO2": 7.2056005918435035,
+          "valeur_CO": 0.04629069389061756,
+          "valeur_O3": 12.970213410210986,
+          "valeur_PM10": 5.0544537202969035,
+          "valeur_PM25": 3.228392697546001
+        },
+        "observed_rows": {
+          "valeur_NO2": 394,
+          "valeur_CO": 498,
+          "valeur_O3": 504,
+          "valeur_PM10": 299,
+          "valeur_PM25": 491
+        },
+        "week_mae": {
+          "1": {
+            "score": 5.326337153227695,
+            "per_target": {
+              "valeur_NO2": 6.558620840543275,
+              "valeur_CO": 0.02281022097924609,
+              "valeur_O3": 12.568708987463088,
+              "valeur_PM10": 4.601006399227093,
+              "valeur_PM25": 2.8805393179257712
+            },
+            "observed_rows": {
+              "valeur_NO2": 154,
+              "valeur_CO": 162,
+              "valeur_O3": 168,
+              "valeur_PM10": 79,
+              "valeur_PM25": 168
+            }
+          },
+          "2": {
+            "score": 5.449403862863366,
+            "per_target": {
+              "valeur_NO2": 7.910636554586475,
+              "valeur_CO": 0.04207480824383951,
+              "valeur_O3": 12.927174268450054,
+              "valeur_PM10": 4.1466485177316965,
+              "valeur_PM25": 2.2204851653047664
+            },
+            "observed_rows": {
+              "valeur_NO2": 145,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 93,
+              "valeur_PM25": 167
+            }
+          },
+          "3": {
+            "score": 6.269891763446621,
+            "per_target": {
+              "valeur_NO2": 7.178281298185649,
+              "valeur_CO": 0.07314846413050378,
+              "valeur_O3": 13.414756974719818,
+              "valeur_PM10": 6.001290115596741,
+              "valeur_PM25": 4.681981964600391
+            },
+            "observed_rows": {
+              "valeur_NO2": 95,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 127,
+              "valeur_PM25": 156
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 19.733616299927235,
+      "settings": {
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "torch": "2.14.1+cu130",
+        "chronos": "2.3.2",
+        "model": "amazon/chronos-2",
+        "context_length": 2048,
+        "quantile": 0.5,
+        "joint": false,
+        "batch_size": 8,
+        "model_revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "model_native_horizon": 1024,
+        "load_seconds": 1.9137612999184057,
+        "inference_seconds": 0.5944393000099808,
+        "gpu_peak_mb": 495.7
+      }
+    },
+    "chronos2_joint": {
+      "validation": {
+        "score": 5.8541877245702665,
+        "per_target": {
+          "valeur_NO2": 7.450749584624005,
+          "valeur_CO": 0.04060061995966367,
+          "valeur_O3": 13.105554364219545,
+          "valeur_PM10": 5.314982751699594,
+          "valeur_PM25": 3.3590513023485236
+        },
+        "observed_rows": {
+          "valeur_NO2": 394,
+          "valeur_CO": 498,
+          "valeur_O3": 504,
+          "valeur_PM10": 299,
+          "valeur_PM25": 491
+        },
+        "week_mae": {
+          "1": {
+            "score": 5.374847090898472,
+            "per_target": {
+              "valeur_NO2": 6.663854272024971,
+              "valeur_CO": 0.024988898986651572,
+              "valeur_O3": 12.330453872680664,
+              "valeur_PM10": 4.978795732425738,
+              "valeur_PM25": 2.8761426783743356
+            },
+            "observed_rows": {
+              "valeur_NO2": 154,
+              "valeur_CO": 162,
+              "valeur_O3": 168,
+              "valeur_PM10": 79,
+              "valeur_PM25": 168
+            }
+          },
+          "2": {
+            "score": 5.796662171184699,
+            "per_target": {
+              "valeur_NO2": 8.359975158428323,
+              "valeur_CO": 0.032984559361778555,
+              "valeur_O3": 12.774132878439765,
+              "valeur_PM10": 4.824158131178989,
+              "valeur_PM25": 2.992060128514638
+            },
+            "observed_rows": {
+              "valeur_NO2": 145,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 93,
+              "valeur_PM25": 167
+            }
+          },
+          "3": {
+            "score": 6.353887069661795,
+            "per_target": {
+              "valeur_NO2": 7.338582952399002,
+              "valeur_CO": 0.06327084006723903,
+              "valeur_O3": 14.212076341538202,
+              "valeur_PM10": 5.883529714148815,
+              "valeur_PM25": 4.271975500155717
+            },
+            "observed_rows": {
+              "valeur_NO2": 95,
+              "valeur_CO": 168,
+              "valeur_O3": 168,
+              "valeur_PM10": 127,
+              "valeur_PM25": 156
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 1.2267190999118611,
+      "settings": {
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "torch": "2.14.1+cu130",
+        "chronos": "2.3.2",
+        "model": "amazon/chronos-2",
+        "context_length": 2048,
+        "quantile": 0.5,
+        "joint": true,
+        "batch_size": 8,
+        "model_revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "model_native_horizon": 1024,
+        "load_seconds": 1.1008166000247002,
+        "inference_seconds": 0.09827959991525859,
+        "gpu_peak_mb": 496.0
+      }
+    }
+  },
+  "selected_method": "chronos2_independent",
+  "final_fit_seconds": 2.854326899978332,
+  "final_settings": {
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "torch": "2.14.1+cu130",
+    "chronos": "2.3.2",
+    "model": "amazon/chronos-2",
+    "context_length": 2048,
+    "quantile": 0.5,
+    "joint": false,
+    "batch_size": 8,
+    "model_revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+    "model_native_horizon": 1024,
+    "load_seconds": 2.1138032999588177,
+    "inference_seconds": 0.7050876000430435,
+    "gpu_peak_mb": 495.7
+  }
+}
